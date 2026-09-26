@@ -33,5 +33,13 @@
 - 87f90ee 2026-02-28 Charles Tao Added CNAME file for custom domain (stickmancharles.me)
 - 5290c4c 2026-02-28 Charles Tao Initial commit
 ## charles
+Local-only recovered code
 
+The following files were recovered from Charles's MacBook Pro 2017 in September 2026.
+They had never been committed to GitHub before recovery, so no original Git commit history is available.
+
+- charles/Python test1/
+- charles/practice/
+- charles/height app/
+- charles/StoryForgeDAO/
 
