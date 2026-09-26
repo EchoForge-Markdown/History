@@ -1,0 +1,8 @@
+.DS_Store
+.vite/
+**/.DS_Store
+**/.vite/
+**/__pycache__/
+**/.pytest_cache/
+**/.git/
+**/.git/**
