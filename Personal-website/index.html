@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stickman Charles</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- ─── NOISE OVERLAY ─── -->
+  <div class="noise-overlay"></div>
+
+  <!-- ─── NAVIGATION ─── -->
+  <nav class="nav fade-in">
+    <div class="nav-inner">
+      <span class="nav-logo">CT</span>
+      <ul class="nav-links">
+        <li><a href="#modules" data-en="Modules" data-zh="模块">Modules</a></li>
+        <li><a href="#philosophy" data-en="Philosophy" data-zh="理念">Philosophy</a></li>
+        <li><a href="#contact" data-en="Contact" data-zh="联系">Contact</a></li>
+      </ul>
+      <button class="lang-toggle" id="lang-toggle" aria-label="Switch language">中文</button>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+        <i class="fa-solid fa-moon" id="theme-icon"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ─── HERO ─── -->
+  <section class="hero">
+    <div class="hero-meta fade-in delay-1">
+      <span class="hero-tag">v2026.03</span>
+    </div>
+
+    <div class="hero-content fade-in delay-2">
+      <h1 class="hero-name">Stickman Charles</h1>
+      <div class="hero-divider"></div>
+      <p class="hero-statement">
+        <span data-en="Designing Systems for Compounded Growth." data-zh="设计复利增长系统。">Designing Systems for Compounded Growth.</span><span class="cursor">|</span>
+      </p>
+    </div>
+
+    <div class="hero-bottom fade-in delay-3">
+      <div class="status-row">
+        <span class="status-dot"></span>
+        <span class="status-text" data-en="System online — thinking in structures" data-zh="系统在线 — 以结构化思维运转">System online — thinking in structures</span>
+      </div>
+      <div class="scroll-hint">
+        <span data-en="SCROLL" data-zh="滚动">SCROLL</span>
+        <span class="scroll-arrow">↓</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CORE MODULES ─── -->
+  <section class="section" id="modules">
+    <div class="section-header fade-in">
+      <span class="section-label" data-en="// CORE MODULES" data-zh="// 核心模块">// CORE MODULES</span>
+      <span class="section-count" data-en="04 units loaded" data-zh="已加载 04 个单元">04 units loaded</span>
+    </div>
+
+    <div class="modules-grid">
+
+      <div class="module-card fade-in delay-1" data-index="01" data-module="projects">
+        <div class="card-header">
+          <span class="card-index">01</span>
+          <span class="card-tag" data-en="BUILD" data-zh="构建">BUILD</span>
+        </div>
+        <h3 class="card-title" data-en="Projects" data-zh="项目">Projects</h3>
+        <p class="card-desc" data-en="Things I've engineered. From web tools to structured experiments — output as proof of thought." data-zh="我构建的东西。从网页工具到结构化实验——输出即思想的证明。">
+          Things I've engineered. From web tools to structured experiments — 
+          output as proof of thought.
+        </p>
+        <div class="card-footer">
+          <span class="card-status" data-en="ACTIVE" data-zh="进行中">ACTIVE</span>
+          <a href="#" class="card-link" data-module="projects" data-en="View →" data-zh="查看 →">View →</a>
+        </div>
+      </div>
+
+      <div class="module-card fade-in delay-2" data-index="02" data-module="essays">
+        <div class="card-header">
+          <span class="card-index">02</span>
+          <span class="card-tag" data-en="WRITE" data-zh="写作">WRITE</span>
+        </div>
+        <h3 class="card-title" data-en="Essays" data-zh="文章">Essays</h3>
+        <p class="card-desc" data-en="Long-form thinking. On systems, structure, and what it means to build with intention." data-zh="长篇深度思考。关于系统、结构，以及有意识地构建事物意味着什么。">
+          Long-form thinking. On systems, structure, and what it means 
+          to build with intention.
+        </p>
+        <div class="card-footer">
+          <span class="card-status" data-en="ACTIVE" data-zh="进行中">ACTIVE</span>
+          <a href="#" class="card-link" data-module="essays" data-en="Read →" data-zh="阅读 →">Read →</a>
+        </div>
+      </div>
+
+      <div class="module-card fade-in delay-3" data-index="03" data-module="milestone">
+        <div class="card-header">
+          <span class="card-index">03</span>
+          <span class="card-tag" data-en="MILESTONE" data-zh="里程碑">MILESTONE</span>
+        </div>
+        <h3 class="card-title" data-en="Milestone" data-zh="里程碑">Milestone</h3>
+        <p class="card-desc" data-en="Key achievements and significant progress points along the journey. Each milestone marks a step forward, reflecting growth, learning, and the realization of important goals." data-zh="旅途中的关键成就与重要节点。每个里程碑都标志着一步前进，记录成长、学习与重要目标的实现。">
+          Key achievements and significant progress points along the journey. Each milestone marks a step forward, reflecting growth, learning, and the realization of important goals.
+        </p>
+        <div class="card-footer">
+          <span class="card-status" data-en="RUNNING" data-zh="持续更新">RUNNING</span>
+          <a href="#" class="card-link" data-module="milestone" data-en="Explore →" data-zh="探索 →">Explore →</a>
+        </div>
+      </div>
+
+      <div class="module-card fade-in delay-1" data-index="04" data-module="review">
+        <div class="card-header">
+          <span class="card-index">04</span>
+          <span class="card-tag" data-en="REVIEW" data-zh="复盘">REVIEW</span>
+        </div>
+        <h3 class="card-title" data-en="Monthly System Review" data-zh="月度系统复盘">Monthly System<br/>Review</h3>
+        <p class="card-desc" data-en="Public accountability logs. What worked, what broke, what gets adjusted next cycle." data-zh="公开问责日志。什么有效、什么失效，以及下一周期如何调整。">
+          Public accountability logs. What worked, what broke, 
+          what gets adjusted next cycle.
+        </p>
+        <div class="card-footer">
+          <span class="card-status">FEB 2026</span>
+          <a href="#" class="card-link" data-module="review" data-en="Open →" data-zh="打开 →">Open →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── PHILOSOPHY ─── -->
+  <section class="section" id="philosophy">
+    <div class="section-header fade-in">
+      <span class="section-label" data-en="// OPERATING PRINCIPLES" data-zh="// 运营原则">// OPERATING PRINCIPLES</span>
+      <span class="section-count" data-en="04 axioms" data-zh="04 条公理">04 axioms</span>
+    </div>
+
+    <div class="philosophy-grid fade-in delay-1">
+
+      <div class="principle">
+        <span class="principle-num">I</span>
+        <div class="principle-body">
+          <h4 class="principle-title" data-en="Systems over goals" data-zh="系统胜于目标">Systems over goals</h4>
+          <p class="principle-desc" data-en="Goals are checkpoints. Systems are the engine. Build the machine, not just the destination." data-zh="目标只是检查点，系统才是引擎。构建机器本身，而非仅盯住终点。">
+            Goals are checkpoints. Systems are the engine. 
+            Build the machine, not just the destination.
+          </p>
+        </div>
+      </div>
+
+      <div class="principle">
+        <span class="principle-num">II</span>
+        <div class="principle-body">
+          <h4 class="principle-title" data-en="Structure over motivation" data-zh="结构胜于动力">Structure over motivation</h4>
+          <p class="principle-desc" data-en="Motivation is volatile. Structure is reliable. Design your environment before you design your goals." data-zh="动力是易变的，结构是可靠的。先设计你的环境，再设计你的目标。">
+            Motivation is volatile. Structure is reliable. 
+            Design your environment before you design your goals.
+          </p>
+        </div>
+      </div>
+
+      <div class="principle">
+        <span class="principle-num">III</span>
+        <div class="principle-body">
+          <h4 class="principle-title" data-en="Iteration over emotion" data-zh="迭代胜于情绪">Iteration over emotion</h4>
+          <p class="principle-desc" data-en="Feelings are data, not directives. Ship, observe, revise. Repeat with precision." data-zh="情感是数据，不是指令。发布、观察、修正，精准地循环。">
+            Feelings are data, not directives. 
+            Ship, observe, revise. Repeat with precision.
+          </p>
+        </div>
+      </div>
+
+      <div class="principle">
+        <span class="principle-num">IV</span>
+        <div class="principle-body">
+          <h4 class="principle-title" data-en="Output as proof of thought" data-zh="输出是思想的证明">Output as proof of thought</h4>
+          <p class="principle-desc" data-en="Ideas without execution are fiction. What you build is the only honest statement you can make." data-zh="没有执行的想法只是幻想。你构建的东西，才是你唯一诚实的表达。">
+            Ideas without execution are fiction. 
+            What you build is the only honest statement you can make.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── SIGNAL PANEL ─── -->
+  <section class="section section--narrow">
+    <div class="signal-panel fade-in">
+      <div class="signal-row">
+        <span class="signal-label" data-en="CURRENT FOCUS" data-zh="当前专注">CURRENT FOCUS</span>
+        <span class="signal-value" data-en="Building compounding systems" data-zh="构建复利增长系统">Building compounding systems</span>
+      </div>
+      <div class="signal-divider"></div>
+      <div class="signal-row">
+        <span class="signal-label" data-en="LOCATION" data-zh="位置">LOCATION</span>
+        <span class="signal-value" data-en="Online · Timezone-agnostic" data-zh="在线 · 不受时区限制">Online · Timezone-agnostic</span>
+      </div>
+      <div class="signal-divider"></div>
+      <div class="signal-row">
+        <span class="signal-label" data-en="STACK" data-zh="技术栈">STACK</span>
+        <span class="signal-value">C++ · AI · Blockchain · Systems thinking</span>
+      </div>
+      <div class="signal-divider"></div>
+      <div class="signal-row" id="contact">
+        <span class="signal-label" data-en="CONTACT" data-zh="联系">CONTACT</span>
+        <span class="signal-value">
+          <a href="mailto:charlesisworkinghard@gmail.com" class="signal-link" data-en="Open channel →" data-zh="发送邮件 →">Open channel →</a>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="footer fade-in">
+    <div class="footer-ack-row">
+      <button class="ack-open-btn" id="ack-open-btn" data-en="♥ Acknowledgments" data-zh="♥ 鸣谢">♥ Acknowledgments</button>
+    </div>
+    <div class="footer-inner">
+      <span class="footer-copy">© 2026 Stickman Charles</span>
+      <span class="footer-tagline" data-en="Simple is everything, just like stickman." data-zh="简单即一切，正如火柴人。">Simple is everything, just like stickman.</span>
+      <div class="footer-social">
+        <a href="https://x.com/StickmanCharlz" target="_blank" rel="noopener noreferrer" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://discord.gg/EGsnYNcPp3" target="_blank" rel="noopener noreferrer" aria-label="Discord"><i class="fab fa-discord"></i></a>
+        <a href="https://youtube.com/@StickmanCharles" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://stickmancharles.substack.com" target="_blank" rel="noopener noreferrer" aria-label="Substack"><i class="fa-solid fa-square-rss"></i></a>
+        <a href="https://www.linkedin.com/in/charles-tao-stickman-charles" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://mp.weixin.qq.com/s/hs4uXE5kq0a82lEpSpigsg" target="_blank" rel="noopener noreferrer" aria-label="WeChat"><i class="fab fa-weixin"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ─── ACKNOWLEDGMENTS MODAL ─── -->
+  <div class="ack-modal" id="ack-modal" aria-hidden="true">
+    <div class="ack-modal-backdrop" id="ack-modal-backdrop"></div>
+    <div class="ack-modal-box">
+      <div class="ack-modal-header">
+        <span class="ack-modal-title" data-en="// ACKNOWLEDGMENTS" data-zh="// 鸣谢">// ACKNOWLEDGMENTS</span>
+        <button class="ack-modal-close" id="ack-modal-close">✕ CLOSE</button>
+      </div>
+      <div class="ack-modal-body">
+        <div class="acknowledgments-grid">
+          <div class="ack-card">
+            <div class="ack-icon"><i class="fa-solid fa-heart"></i></div>
+            <h3 class="ack-name" data-en="Dad" data-zh="爸爸">Dad</h3>
+            <p class="ack-desc" data-en="Constantly supporting me on the path forward. My first reader. Without him, this website would not exist." data-zh="在我前进的道路上不断支持我，我的一位读者，没有他就没有这个网站。">Constantly supporting me on the path forward. My first reader. Without him, this website would not exist.</p>
+          </div>
+          <div class="ack-card">
+            <div class="ack-icon"><i class="fa-solid fa-heart"></i></div>
+            <h3 class="ack-name" data-en="Mom" data-zh="妈妈">Mom</h3>
+            <p class="ack-desc" data-en="My second reader and steadfast supporter." data-zh="我的第二个读者，也是我的坚定支持者。">My second reader and steadfast supporter.</p>
+          </div>
+          <div class="ack-card">
+            <div class="ack-icon"><i class="fa-solid fa-book"></i></div>
+            <h3 class="ack-name" data-en="Prof. Sun" data-zh="孙教授">Prof. Sun</h3>
+            <p class="ack-desc" data-en="My enlightenment mentor on the path to wisdom. Gave me the greatest encouragement." data-zh="我认知路上的启蒙导师，给予我最大的鼓励。">My enlightenment mentor on the path to wisdom. Gave me the greatest encouragement.</p>
+          </div>
+          <div class="ack-card">
+            <div class="ack-icon"><i class="fa-solid fa-handshake"></i></div>
+            <h3 class="ack-name" data-en="Uncle" data-zh="伯伯">Uncle</h3>
+            <p class="ack-desc" data-en="My first patron reader. Thank you!" data-zh="我的第一位打赏读者，谢谢您！">My first patron reader. Thank you!</p>
+          </div>
+          <div class="ack-card">
+            <div class="ack-icon"><i class="fa-solid fa-robot"></i></div>
+            <h3 class="ack-name">Jackywine</h3>
+            <p class="ack-desc" data-en="AI pioneer (@Jackywine on X). The catalyst for this idea." data-zh="AI领域的大牛，X账号@Jackywine，也是催生我此想法的人。">AI pioneer (<a href="https://x.com/Jackywine" target="_blank" rel="noopener noreferrer" class="ack-link">@Jackywine</a> on X). The catalyst for this idea.</p>
+          </div>
+          <div class="ack-card">
+            <div class="ack-icon"><i class="fa-solid fa-camera"></i></div>
+            <h3 class="ack-name">Brian Bray</h3>
+            <p class="ack-desc" data-en="My English teacher, master of photography and art. This website was inspired by his vision." data-zh="我的英语老师，摄影和艺术的大师。网站受到了他的启发。">My English teacher, master of photography and art. This website was inspired by his vision.</p>
+          </div>
+          <div class="ack-card">
+            <div class="ack-icon"><i class="fa-brands fa-bitcoin"></i></div>
+            <h3 class="ack-name">田野菜 (Tian Ye Cai)</h3>
+            <p class="ack-desc" data-en="A trusted friend on the Cardano network (@tianyecai on X). Thank you for your constant affirmation!" data-zh="Cardano 链上的良师益友，X账号：@tianyecai，谢谢您对我一贯的肯定！">A trusted friend on the Cardano network (<a href="https://x.com/tianyecai" target="_blank" rel="noopener noreferrer" class="ack-link">@tianyecai</a> on X). Thank you for your constant affirmation!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── MODULE PANEL ─── -->
+  <div class="module-panel" id="module-panel" aria-hidden="true">
+    <div class="panel-backdrop" id="panel-backdrop"></div>
+    <div class="panel-container">
+      <div class="panel-topbar">
+        <div class="panel-topbar-left">
+          <span class="panel-index" id="panel-index">01</span>
+          <span class="panel-tag-label" id="panel-tag-label">BUILD</span>
+          <span class="panel-title" id="panel-title">Projects</span>
+        </div>
+        <button class="panel-close" id="panel-close" aria-label="Close">✕ CLOSE</button>
+      </div>
+      <div class="panel-body" id="panel-body">
+        <!-- Dynamic content injected by JS -->
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

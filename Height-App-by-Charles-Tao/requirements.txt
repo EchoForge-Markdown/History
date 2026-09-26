@@ -1,0 +1,8 @@
+Flask>=2.3.0
+gunicorn>=20.1.0
+# optional: if you prefer waitress uncomment below
+# waitress>=2.1.2
+
+# pin versions used in local development if desired
+# e.g. pytest for tests
+pytest>=7.0.0

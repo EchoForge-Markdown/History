@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+*.npm
+.npm
+package-lock.json
+yarn.lock
+
+# Production
+dist/
+build/
+*.egg-info/
+__pycache__/
+*.pyc
+
+# Misc
+.DS_Store
+*.swp
+*.swo
+*~
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.sublime-*

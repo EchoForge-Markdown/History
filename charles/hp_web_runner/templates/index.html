@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>C++ Runner / Height Predictor</title>
+  <!-- Inline tiny critical paint styles to avoid FOUC while stylesheet loads -->
+  <style>html{background:#071024;color:#e6eef8}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,system-ui,sans-serif}</style>
+  <!-- Load stylesheet non-blocking: preload + onload pattern -->
+  <link rel="preload" href="/static/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/static/style.css"></noscript>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">HP</div>
+      <div>
+        <h1 class="title">身高预测</h1>
+        <div class="muted">仅保留身高预测功能 — 根据父母身高预测孩子成年身高。</div>
+      </div>
+    </div>
+
+    <div class="page-section">
+      <div class="card center-card">
+        <h2 class="no-top">输入父母身高</h2>
+        <form id="heightForm">
+          <div class="form-row">
+            <div class="flex-1">
+              <label for="gender">孩子性别</label>
+              <select id="gender" name="gender">
+                <option value="男">男</option>
+                <option value="女">女</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="flex-1">
+              <label>父亲身高 (cm)</label>
+              <input type="number" id="father" name="father_height" value="175" min="50" max="250" required title="父亲身高，单位厘米" placeholder="例如 175">
+            </div>
+            <div class="spacer-16" aria-hidden="true"></div>
+            <div class="flex-1">
+              <label>母亲身高 (cm)</label>
+              <input type="number" id="mother" name="mother_height" value="165" min="50" max="250" required title="母亲身高，单位厘米" placeholder="例如 165">
+            </div>
+          </div>
+          <div class="actions-row">
+            <button type="submit" class="btn" id="predBtn">预测</button>
+            <div id="predSpinner" class="spinner hidden" aria-hidden="true"></div>
+            <div class="help">请求超时 8 秒</div>
+          </div>
+          <!-- hidden unit fields so non-JS form submissions include units -->
+          <input type="hidden" name="father_unit" value="cm">
+          <input type="hidden" name="mother_unit" value="cm">
+        </form>
+  <div id="predResult" class="result mt-12">预测结果会显示在这里</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // fetch with timeout
+    async function fetchWithTimeout(url, opts = {}, timeout = 10000) {
+      const controller = new AbortController();
+      const id = setTimeout(() => controller.abort(), timeout);
+      opts.signal = controller.signal;
+      try {
+        const res = await fetch(url, opts);
+        clearTimeout(id);
+        return res;
+      } catch (err) {
+        clearTimeout(id);
+        throw err;
+      }
+    }
+
+    // Height predictor
+    document.getElementById('heightForm').addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const g = document.getElementById('gender').value;
+      const f = parseFloat(document.getElementById('father').value);
+      const m = parseFloat(document.getElementById('mother').value);
+      const resEl = document.getElementById('predResult');
+      const btn = document.getElementById('predBtn');
+      const spinner = document.getElementById('predSpinner');
+      btn.disabled = true;spinner.style.display='inline-block';resEl.textContent='计算中...';
+      try{
+        const controller = new AbortController();
+        setTimeout(()=>controller.abort(), 8000);
+        const res = await fetch('/height',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({gender:g,father_height:f,father_unit:'cm',mother_height:m,mother_unit:'cm'}),signal:controller.signal});
+        const j = await res.json();
+        if (!res.ok) throw new Error(j.error || '未知错误');
+  resEl.innerHTML = `<strong class="small">预测:</strong> <div class="pred-value">${j.predicted_cm.toFixed(1)} cm</div>\n        <div class="muted small">范围 ${j.low_cm.toFixed(1)} - ${j.high_cm.toFixed(1)}</div>`;
+      }catch(err){resEl.textContent='错误: '+err.message}finally{btn.disabled=false;spinner.style.display='none'}
+    })
+  </script>
+</body>
+</html>

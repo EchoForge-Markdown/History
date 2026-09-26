@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    @apply bg-dark-bg text-dark-text antialiased;
+    margin: 0;
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-dark-bg;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-dark-border rounded-full;
+  }
+}
+
+@layer components {
+  /* ===== 按钮 ===== */
+  .btn-primary {
+    @apply bg-primary-500 hover:bg-primary-600 text-white font-bold py-2 px-5 rounded-full
+           transition-all duration-200 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed
+           active:scale-95;
+  }
+  .btn-outline {
+    @apply border border-dark-border text-dark-text hover:bg-dark-hover py-2 px-5 rounded-full
+           transition-all duration-200 ease-in-out active:scale-95;
+  }
+  .btn-success {
+    background-color: #00ba7c;
+    @apply hover:brightness-110 text-white font-bold py-2 px-5 rounded-full
+           transition-all duration-200 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed
+           active:scale-95;
+  }
+  .btn-danger {
+    background-color: #f4212e;
+    @apply hover:brightness-110 text-white font-bold py-2 px-5 rounded-full
+           transition-all duration-200 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed
+           active:scale-95;
+  }
+  .btn-glow {
+    @apply btn-primary shadow-glow-sm hover:shadow-glow-md;
+  }
+
+  /* ===== 卡片 ===== */
+  .card {
+    @apply bg-dark-card border border-dark-border rounded-2xl p-5
+           transition-all duration-200 hover:bg-dark-hover animate-fadeIn;
+  }
+
+  /* ===== 输入框 ===== */
+  .input-field {
+    @apply w-full bg-transparent border border-dark-border rounded-xl px-4 py-3 text-dark-text
+           placeholder-dark-secondary focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500
+           transition-all duration-200;
+  }
+
+  /* ===== Tab 导航 ===== */
+  .tab-btn {
+    @apply px-6 py-3 font-semibold text-sm transition-all duration-200 border-b-2 border-transparent
+           text-dark-secondary hover:text-dark-text hover:bg-dark-hover;
+  }
+  .tab-btn-active {
+    @apply px-6 py-3 font-semibold text-sm transition-all duration-200 border-b-2 border-primary-500
+           text-primary-500;
+  }
+
+  /* ===== 数据卡片 ===== */
+  .metric-card {
+    @apply bg-dark-card border border-dark-border rounded-2xl p-4 text-center
+           transition-all duration-200 hover:border-primary-500/30;
+  }
+
+  /* ===== 徽章 ===== */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  .badge-blue {
+    @apply badge bg-primary-500/20 text-primary-400;
+  }
+  .badge-green {
+    @apply badge;
+    background-color: rgb(0 186 124 / 0.2);
+    color: #00ba7c;
+  }
+  .badge-yellow {
+    @apply badge bg-yellow-500/20 text-yellow-400;
+  }
+  .badge-red {
+    @apply badge;
+    background-color: rgb(244 33 46 / 0.2);
+    color: #f4212e;
+  }
+
+  /* ===== Web3 Glow 特效 ===== */
+  .glow-card {
+    @apply card animate-glow;
+  }
+
+  /* ===== 骨架屏 ===== */
+  .skeleton {
+    @apply animate-pulse bg-dark-card rounded-xl;
+  }
+
+  /* ===== 分成条 ===== */
+  .split-bar {
+    @apply h-2 rounded-full overflow-hidden flex;
+  }
+  .split-bar-author {
+    @apply bg-primary-500 transition-all duration-500;
+  }
+  .split-bar-fan {
+    background-color: #00ba7c;
+    @apply transition-all duration-500;
+  }
+  .split-bar-platform {
+    @apply bg-yellow-500 transition-all duration-500;
+  }
+}
+
+@layer utilities {
+  .bg-success {
+    background-color: #00ba7c;
+  }
+  .text-success {
+    color: #00ba7c;
+  }
+  .bg-success\/20 {
+    background-color: rgb(0 186 124 / 0.2);
+  }
+  .bg-error {
+    background-color: #f4212e;
+  }
+  .text-error {
+    color: #f4212e;
+  }
+  .bg-error\/20 {
+    background-color: rgb(244 33 46 / 0.2);
+  }
+}

@@ -1,0 +1,88 @@
+/* Liquid black glass theme - performance conscious
+   - Use system fonts to avoid blocking webfont fetch
+   - Use backdrop-filter for glass effect where supported
+   - Provide reduced-motion fallbacks
+*/
+:root{
+  --bg-1: #06070a;
+  --bg-2: #071024;
+  --glass-opaque: rgba(255,255,255,0.04);
+  --glass-strong: rgba(255,255,255,0.06);
+  --accent: #4f46e5; /* indigo */
+  --accent-2: #06b6d4; /* cyan */
+  --muted: rgba(230,238,248,0.65);
+  --text: #e6eef8;
+  --card-radius: 14px;
+}
+
+/* Use system UI font stack (fast, no additional network cost) */
+*{box-sizing:border-box;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', system-ui, sans-serif}
+html,body{height:100%;margin:0}
+body{
+  color:var(--text);
+  background: radial-gradient(1200px 600px at 10% 10%, rgba(20,30,50,0.6), transparent 10%),
+              radial-gradient(900px 500px at 90% 90%, rgba(10,20,40,0.6), transparent 10%),
+              linear-gradient(180deg,var(--bg-1),var(--bg-2));
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  min-height:100vh;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.container{max-width:880px;margin:28px auto;padding:20px}
+.header{display:flex;align-items:center;gap:14px}
+.logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:700;color:white;flex:0 0 56px}
+.title{font-size:20px;margin:0}
+
+/* Grid simplified for single-column focus on predictor */
+.card{position:relative;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:var(--card-radius);box-shadow:0 8px 40px rgba(2,6,23,0.65);overflow:hidden;border:1px solid rgba(255,255,255,0.03)}
+
+/* glass overlay to create liquid feel */
+.card::before{
+  content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+  mix-blend-mode:overlay;
+}
+
+.form-row{display:flex;gap:12px;margin-bottom:12px}
+label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+input[type='text'], input[type='number'], select, textarea{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));color:var(--text);outline:none}
+input:focus, select:focus, textarea:focus{box-shadow:0 6px 20px rgba(0,0,0,0.6);border-color:rgba(79,70,229,0.9)}
+
+button.btn{appearance:none;border:0;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;font-weight:600;cursor:pointer;transition:transform .12s ease, box-shadow .12s ease}
+button.btn:active{transform:translateY(1px)}
+button.btn:focus{box-shadow:0 6px 30px rgba(34,197,94,0.08)}
+
+.result{padding:14px;border-radius:10px;background:linear-gradient(180deg, rgba(0,0,0,0.25), rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,0.03)}
+.muted{color:var(--muted);font-size:13px}
+.small{font-size:13px}
+.spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,0.08);border-top-color:var(--accent);border-radius:50%;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.help{font-size:12px;color:var(--muted);margin-top:8px}
+
+/* Subtle floating accent to create liquid motion without heavy paint cost */
+.card::after{
+  content: "";position:absolute;right:-120px;top:-80px;width:320px;height:320px;background:radial-gradient(circle at 30% 30%, rgba(99,102,241,0.08), transparent 30%), radial-gradient(circle at 70% 70%, rgba(6,182,212,0.06), transparent 25%);filter:blur(28px);transform:translateZ(0);pointer-events:none}
+
+/* Performance hints */
+.card, .logo, .spinner {will-change:transform,opacity}
+
+@media (prefers-reduced-motion: reduce){
+  .spinner, .card::after {animation: none;transition:none}
+}
+
+@media(max-width:700px){.container{padding:14px}.logo{width:48px;height:48px}.card{padding:14px}}
+
+/* Classes to replace previous inline styles in template */
+.page-section{margin-top:20px}
+.center-card{max-width:640px;margin-left:auto;margin-right:auto}
+.no-top{margin-top:0}
+.flex-1{flex:1}
+.spacer-16{width:16px}
+.actions-row{margin-top:12px;display:flex;gap:8px;align-items:center}
+.hidden{display:none}
+.mt-12{margin-top:12px}
+
+/* Prediction display */
+.pred-value{font-size:20px;margin-top:6px}

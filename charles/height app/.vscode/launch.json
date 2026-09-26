@@ -1,0 +1,38 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug v1 (CodeLLDB - External)",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/v1_exe",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "Build v1 (g++)",
+            "stopOnEntry": false,
+            "terminal": "externalTerminal"
+        },
+        {
+            "name": "Debug v1 (CodeLLDB - Integrated)",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/v1_exe",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "Build v1 (g++)",
+            "stopOnEntry": false,
+            "terminal": "integratedTerminal"
+        },
+        {
+            "name": "Run v1 (Integrated - No Debug)",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/v1_exe",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "Build v1 (g++)",
+            "noDebug": true,
+            "terminal": "integratedTerminal"
+        }
+    ]
+}

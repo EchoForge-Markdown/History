@@ -1,0 +1,358 @@
+/* ═══════════════════════════════════════════════════════════
+   HEIGHT APP — LIQUID BLACK GLASS
+   Black · Glassmorphism · White Glow on Hover
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  --bg:             #000000;
+  --text-primary:   #FFFFFF;
+  --text-secondary: #AAAAAA;
+  --text-muted:     #555555;
+  --border:         rgba(255, 255, 255, 0.13);
+  --border-hover:   rgba(255, 255, 255, 0.35);
+  --glass-bg:       rgba(255, 255, 255, 0.055);
+  --glass-hover:    rgba(255, 255, 255, 0.09);
+  --glow:           0 0 32px rgba(255, 255, 255, 0.07),
+                    0 0 80px rgba(255, 255, 255, 0.03);
+  --glow-hover:     0 0 24px rgba(255, 255, 255, 0.14),
+                    0 0 60px rgba(255, 255, 255, 0.07),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  --card-radius:    12px;
+  --font:           'Inter', 'Helvetica Neue', Arial, system-ui, sans-serif;
+  --transition:     0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { height: 100%; }
+
+body {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font);
+  font-weight: 300;
+  line-height: 1.7;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+/* ── FADE-IN ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── LAYOUT ── */
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 52px 32px 88px;
+  animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ── HEADER ── */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 52px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: var(--glass-bg);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--text-primary);
+  flex: 0 0 44px;
+  box-shadow: var(--glow);
+  transition: box-shadow var(--transition), border-color var(--transition);
+}
+.logo:hover {
+  box-shadow: var(--glow-hover);
+  border-color: var(--border-hover);
+}
+
+.title {
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ── CARD — liquid glass panel ── */
+.card {
+  position: relative;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 32px 36px;
+  border-radius: var(--card-radius);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  box-shadow: var(--glow);
+  transition: box-shadow var(--transition),
+              border-color var(--transition),
+              background var(--transition);
+}
+
+/* top edge highlight — glass refraction feel */
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.07) 0%,
+    rgba(255, 255, 255, 0.01) 40%,
+    transparent 100%
+  );
+  opacity: 1;
+  transition: opacity var(--transition);
+}
+
+/* white bloom on hover — spreads from top-left */
+.card::after {
+  content: '';
+  position: absolute;
+  top: -60px;
+  left: -60px;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.11) 0%,
+    rgba(255, 255, 255, 0.04) 40%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity var(--transition), transform var(--transition);
+  transform: scale(0.7);
+  pointer-events: none;
+}
+
+.card:hover {
+  background: var(--glass-hover);
+  border-color: var(--border-hover);
+  box-shadow: var(--glow-hover);
+}
+.card:hover::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ── FORM ── */
+.form-row {
+  display: flex;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  font-family: 'Courier New', monospace;
+}
+
+input[type='text'],
+input[type='number'],
+select,
+textarea {
+  width: 100%;
+  padding: 11px 15px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--text-primary);
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 300;
+  outline: none;
+  transition: border-color var(--transition),
+              background var(--transition),
+              box-shadow var(--transition);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: rgba(255, 255, 255, 0.42);
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.05),
+              0 0 20px rgba(255, 255, 255, 0.06);
+}
+
+input:hover,
+select:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+select option {
+  background: #111;
+  color: var(--text-primary);
+}
+
+/* ── BUTTON ── */
+button.btn {
+  appearance: none;
+  -webkit-appearance: none;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  padding: 11px 28px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--text-primary);
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.04),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: background var(--transition),
+              border-color var(--transition),
+              box-shadow var(--transition);
+}
+
+/* white bloom on button hover */
+button.btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.14) 0%, transparent 65%);
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  pointer-events: none;
+}
+
+button.btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--border-hover);
+  box-shadow: 0 0 28px rgba(255, 255, 255, 0.10),
+              0 0 60px rgba(255, 255, 255, 0.05),
+              inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+button.btn:hover::after {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+button.btn:active {
+  background: rgba(255, 255, 255, 0.17);
+  transform: translateY(1px);
+}
+
+/* ── RESULT ── */
+.result {
+  padding: 20px 24px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.result:not(:empty):hover {
+  border-color: rgba(255,255,255,0.2);
+  box-shadow: 0 0 24px rgba(255,255,255,0.05);
+}
+
+/* ── TYPOGRAPHY HELPERS ── */
+.muted      { color: var(--text-secondary); font-size: 13px; }
+.small      { font-size: 13px; }
+.help       { font-size: 12px; color: var(--text-muted); margin-top: 8px; letter-spacing: 0.04em; }
+.pred-value { font-size: 24px; font-weight: 300; letter-spacing: -0.02em; margin-top: 8px; color: var(--text-primary); }
+
+/* ── SPINNER ── */
+.spinner {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-top-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── LAYOUT UTILITIES ── */
+.page-section  { margin-top: 28px; }
+.center-card   { max-width: 640px; margin-left: auto; margin-right: auto; }
+.no-top        { margin-top: 0; }
+.flex-1        { flex: 1; }
+.spacer-16     { width: 16px; }
+.actions-row   { margin-top: 16px; display: flex; gap: 12px; align-items: center; }
+.hidden        { display: none; }
+.mt-12         { margin-top: 12px; }
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #000; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.22); }
+
+/* ── SELECTION ── */
+::selection { background: rgba(255, 255, 255, 0.14); color: var(--text-primary); }
+
+/* ── REDUCED MOTION ── */
+@media (prefers-reduced-motion: reduce) {
+  .spinner { animation: none; }
+  .container { animation: none; }
+  .card, .card::after, button.btn, button.btn::after,
+  input, select { transition: none; }
+}
+
+/* ── FOOTER ── */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 24px 32px;
+  text-align: center;
+  margin-top: 32px;
+}
+
+.footer-text {
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 700px) {
+  .container { padding: 28px 16px 60px; }
+  .form-row  { flex-direction: column; }
+  .card      { padding: 22px 20px; }
+}
